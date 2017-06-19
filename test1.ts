@@ -2,6 +2,7 @@ import {executeSql} from "./sql/MsSqlDb";
 import {exportCategories} from "./exportCategories";
 import {exportAttrs} from "./exportAttrs";
 import {exportAttrTerms} from "./exportAttrTerms";
+import {exportProducts} from "./exportProducts";
 var WooCommerceAPI = require('woocommerce-api');
 
 //
@@ -85,6 +86,17 @@ exportCategories()
                 exportAttrTerms()
                     .then(() => {
                         console.log("exportAttrTerms Ok");
+
+                        exportProducts()
+                            .then(() => {
+
+                                console.log("exportProducts Ok");
+                            })
+                            .catch((err) => {
+                                console.error("exportProducts ", err);
+                            });
+
+
                     })
                     .catch((err) => {
                         console.error("exportAttrTerms ", err);

@@ -3,7 +3,7 @@ import {getRandomId} from "./getRandomId";
 
 export async function getCategoryJson(categoryKey: number): Promise<any> {
     let sql = `
-select Ключ,Номер,Название,Описание,ПорядокПоказа,[dbo].[_РодительскаяКатегорияТовара_wooId](Ключ) parent from _КатегорияТовара where Ключ=${categoryKey}
+select _wooId,Ключ,Номер,Название,Описание,ПорядокПоказа,[dbo].[_РодительскаяКатегорияТовара_wooId](Ключ) parent from _КатегорияТовара where Ключ=${categoryKey}
         `;
 
     let rowset = await executeSql(sql);
@@ -22,7 +22,6 @@ select Ключ,Номер,Название,Описание,ПорядокПо�
         data.id = catRow["_wooId"];
         delete data.slug;
     }
-
 
     if (catRow["parent"] > 0)
         data.parent = catRow["parent"];

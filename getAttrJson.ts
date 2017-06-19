@@ -3,7 +3,7 @@ import {getRandomId} from "./getRandomId";
 
 export async function getAttrJson(attrKey: number): Promise<any> {
     let sql = `
-select Ключ,Номер,ПорядокПоказа from _АтрибутТовара where Ключ=${attrKey}
+select Ключ,Номер,ПорядокПоказа,_wooId from _АтрибутТовара where Ключ=${attrKey}
         `;
 
     let rowset = await executeSql(sql);
