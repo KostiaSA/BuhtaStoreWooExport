@@ -1,0 +1,19 @@
+{
+  "name": "buhtastore-woocommerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run": "tsc && node server.js",
+    "test1": "tsc && node test1.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/moment": "^2.13.0",
+    "@types/mssql": "^3.1.29",
+    "moment": "^2.18.1",
+    "mssql": "^3.3.0",
+    "woocommerce-api": "^1.4.2"
+  }
+}
