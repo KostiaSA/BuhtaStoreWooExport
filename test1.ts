@@ -1,5 +1,7 @@
 import {executeSql} from "./sql/MsSqlDb";
 import {exportCategories} from "./exportCategories";
+import {exportAttrs} from "./exportAttrs";
+import {exportAttrTerms} from "./exportAttrTerms";
 var WooCommerceAPI = require('woocommerce-api');
 
 //
@@ -70,10 +72,32 @@ var WooCommerce = new WooCommerceAPI({
 //let sql = "select top 1 Номер,Название from ТМЦ where Ключ=6 select top 1 Номер,Название from ТМЦ where Ключ=7 ";
 //let tmcRows = executeSql(sql).then((res)=>{console.log(res)});
 
+
+
 exportCategories()
     .then(() => {
         console.log("exportCategories Ok");
+
+        exportAttrs()
+            .then(() => {
+                console.log("exportAttrs Ok");
+
+                exportAttrTerms()
+                    .then(() => {
+                        console.log("exportAttrTerms Ok");
+                    })
+                    .catch((err) => {
+                        console.error("exportAttrTerms ", err);
+                    });
+
+
+            })
+            .catch((err) => {
+                console.error("exportAttrs ", err);
+            });
+
     })
     .catch((err) => {
         console.error("exportCategories ", err);
     });
+
