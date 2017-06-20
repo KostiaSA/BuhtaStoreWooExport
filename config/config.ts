@@ -17,10 +17,17 @@ let psWeb: IConfig = {
 
 };
 
+// export let wooApiConfig = {  shop.buhta.ru
+//     url: 'http://shop.buhta.ru',
+//     consumerKey: 'ck_32eb45e32df293bfacdd854bc01e49133dbef3c3',
+//     consumerSecret: 'cs_ca27d3eba6c68416f2c471f22cb3e950230901e0',
+//     wpAPI: true,
+//     version: 'wc/v2'
+// };
 export let wooApiConfig = {
-    url: 'http://shop.buhta.ru',
-    consumerKey: 'ck_840ad78c648fade181ed3c10ff1688c0e20ec2ff',
-    consumerSecret: 'cs_6eaca7680e3cb619bd92b712a55d4592ade39fe1',
+    url: 'http://cl76861-wordpress-3.tw1.ru',
+    consumerKey: 'ck_897daae43090574752a999898b32a8a8c586efd0',
+    consumerSecret: 'cs_986c95467c1b87641df8143dfea6ddb67cf16625',
     wpAPI: true,
     version: 'wc/v2'
 };

@@ -1,5 +1,6 @@
 import {executeSql} from "./sql/MsSqlDb";
 import {getRandomId} from "./getRandomId";
+import {translit} from "./translit";
 
 export async function getProductJson(tmcKey: number): Promise<any> {
     let sql = `
@@ -21,7 +22,7 @@ where Ключ=${tmcKey}
     var data:any = {
         name: tmcRow["Название"],
         sku: tmcRow["Номер"],
-        slug: getRandomId(),
+        slug: translit(tmcRow["Номер"])+"-"+tmcRow["Ключ"],
         type: "simple",
         regular_price: tmcRow["_Цена"].toString(),
         description: tmcRow["_КороткоеОписание"],

@@ -79,6 +79,8 @@ exportCategories()
     .then(() => {
         console.log("exportCategories Ok");
 
+        //process.exit(0);
+
         exportAttrs()
             .then(() => {
                 console.log("exportAttrs Ok");

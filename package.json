@@ -14,6 +14,7 @@
     "@types/mssql": "^3.1.29",
     "moment": "^2.18.1",
     "mssql": "^3.3.0",
+    "translitit-cyrillic-russian-to-latin": "^0.1.1",
     "woocommerce-api": "^1.4.2"
   }
 }

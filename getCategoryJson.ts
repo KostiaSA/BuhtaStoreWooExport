@@ -1,5 +1,6 @@
 import {executeSql} from "./sql/MsSqlDb";
 import {getRandomId} from "./getRandomId";
+import {translit} from "./translit";
 
 export async function getCategoryJson(categoryKey: number): Promise<any> {
     let sql = `
@@ -15,7 +16,7 @@ select _wooId,Ключ,Номер,Название,Описание,Порядо
         name: catRow["Название"],
         description: catRow["Описание"],
         menu_order: catRow["ПорядокПоказа"],
-        slug: getRandomId(),
+        slug: translit(catRow["Название"]),
     };
 
     if (catRow["_wooId"] > 0){

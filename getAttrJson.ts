@@ -1,5 +1,6 @@
 import {executeSql} from "./sql/MsSqlDb";
 import {getRandomId} from "./getRandomId";
+import {translit} from "./translit";
 
 export async function getAttrJson(attrKey: number): Promise<any> {
     let sql = `
@@ -14,7 +15,7 @@ select Ключ,Номер,ПорядокПоказа,_wooId from _Атрибу�
     var data: any = {
         name: attrRow["Номер"],
 //        slug: "attr" + attrRow["Ключ"].toString(),
-        slug: getRandomId(),
+        slug: translit(attrRow["Номер"])+"-"+attrRow["Ключ"],
         menu_order: attrRow["ПорядокПоказа"],
     };
     if (attrRow["_wooId"] > 0) {
