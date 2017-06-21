@@ -11,6 +11,7 @@ select
   _КороткоеОписание,
   _ПолноеОписание,
   _wooId,
+  _PartNumber,
   (SELECT _wooId FROM _КатегорияТовара WHERE _КатегорияТовара.Ключ=ТМЦ._КатегорияТовара) Category
 from ТМЦ 
 where Ключ=${tmcKey}
@@ -22,11 +23,11 @@ where Ключ=${tmcKey}
     var data:any = {
         name: tmcRow["Название"],
         sku: tmcRow["Номер"],
-        slug: translit(tmcRow["Номер"])+"-"+tmcRow["Ключ"],
+        slug: translit(tmcRow["Номер"])+"-"+tmcRow["_PartNumber"],
         type: "simple",
         regular_price: tmcRow["_Цена"].toString(),
-        description: tmcRow["_КороткоеОписание"],
-        short_description: tmcRow["_ПолноеОписание"],
+        short_description: tmcRow["_КороткоеОписание"],
+        description: tmcRow["_ПолноеОписание"],
         categories: [
             {
                 id: tmcRow["Category"]
@@ -47,9 +48,10 @@ where Ключ=${tmcKey}
 
     if (tmcRow["_wooId"] > 0) {
         data.id = tmcRow["_wooId"];
-        delete data.slug;
+        //delete data.slug;
     }
 
+    console.log(data);
     return data;
 }
 

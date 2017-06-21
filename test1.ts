@@ -93,6 +93,8 @@ exportCategories()
                             .then(() => {
 
                                 console.log("exportProducts Ok");
+                                process.exit(0);
+
                             })
                             .catch((err) => {
                                 console.error("exportProducts ", err);

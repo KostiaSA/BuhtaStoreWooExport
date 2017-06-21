@@ -15,7 +15,12 @@ select Ключ,Название from ТМЦ where _Опубликовано=1 a
         let data = await getProductJson(tmcRow["Ключ"]);
         console.log("--- export ТМЦ --- : ", data.description);
 
-        let res = await wooPost("products", data);
+
+        let method = "products";
+        if (data.id)
+            method = "products/" + data.id;
+
+        let res = await wooPost(method, data);
 
         if (res.id) {
             await executeSql("UPDATE ТМЦ SET _wooId=" + res.id + ", _wooExportTime=getdate() WHERE Ключ=" + tmcRow["Ключ"]);
@@ -24,7 +29,7 @@ select Ключ,Название from ТМЦ where _Опубликовано=1 a
 
             throw "ошибка для ТМЦ '" + tmcRow["Название"] + "': " + JSON.stringify(res);
         }
-     }
+    }
 
 }
 
